@@ -1,0 +1,32 @@
+[
+  {
+    "vagon_no": "21753302512",
+    "vagon_tipi": "Ks (330 1 001/2650)",
+    "komponent": "Dikme (Platform Vagon)",
+    "neden": "Dikme Deste\u011fi (Platform Vagon)",
+    "istasyon": "Arifiye"
+  },
+
+  {
+    "vagon_no": "12312312345",
+    "vagon_tipi": "Es (552 0 002/1902)",
+    "komponent": "Boden",
+    "neden": "Boden ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+    "istasyon": "Konya"
+  },
+
+  {
+    "vagon_no": "12312312345",
+    "vagon_tipi": "Ks (330 1 001/2650)",
+    "komponent": "Fren Pn\u00f6matik K\u0131s\u0131m",
+    "neden": "Fren Pn\u00f6matik K\u0131s\u0131m ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+    "istasyon": "Konya"
+  },
+  {
+    "vagon_no": "12312312357",
+    "vagon_tipi": "Sgss (456 8 923/9772)",
+    "komponent": "Yan veya Al\u0131n Duvar (A\u00e7\u0131k Vagon)",
+    "neden": "Yan veya Al\u0131n Duvar (A\u00e7\u0131k Vagon) ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+    "istasyon": "Band\u0131rma"
+  }
+]
