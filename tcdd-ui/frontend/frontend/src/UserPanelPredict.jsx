@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-const API_BASE = import.meta.env.VITE_API_BASE;
 
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 function PredictPage() {
   const location = useLocation();
@@ -10,24 +10,51 @@ function PredictPage() {
   const [response, setResponse] = useState(null);
   const [capacity, setCapacity] = useState({});
   const [stationRepairs, setStationRepairs] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (!location.state) return;
     const fetchPrediction = async () => {
       try {
-        const res = await axios.post(`${API_BASE}/predict`, location.state); // ✅ res burada tanımlanmalı
-        setResponse(res.data);               // ✅ response state set ediliyor
+        // Eğer state gelmemişse test verisi kullan
+        const inputData = location.state || {
+          vagon_no: "12345678901",
+          vagon_tipi: "Falns",
+          komponent: "Fren Pnömatik Kısım"
+        };
+
+        console.log("📦 Gönderilen tahmin verisi:", inputData);
+
+        const res = await axios.post(`${API_BASE}/predict`, inputData);
+
+        console.log("✅ API yanıtı:", res.data);
+
+        if (!res.data || !res.data.prediction) {
+          setError(true);
+          return;
+        }
+
+        setResponse(res.data);
         setCapacity(res.data.capacity_map || {});
         setStationRepairs(res.data.station_repairs || []);
-
       } catch (err) {
-        alert("Tahmin alınamadı.");
+        console.error("❌ API hatası:", err);
+        setError(true);
       }
     };
+
     fetchPrediction();
   }, [location]);
 
-  if (!response) return <div>Yükleniyor...</div>;
+  if (error) {
+    return (
+      <div>
+        <h3 style={{ color: "red" }}>❌ Tahmin alınamadı. Lütfen bilgileri kontrol edin.</h3>
+        <button onClick={() => navigate("/")} style={{ marginTop: 20 }}>⬅️ Geri Dön</button>
+      </div>
+    );
+  }
+
+  if (!response) return <div>⏳ Yükleniyor...</div>;
 
   return (
     <div>
