@@ -15,10 +15,11 @@ function PredictPage() {
     if (!location.state) return;
     const fetchPrediction = async () => {
       try {
-        await axios.post(`${API_BASE}/predict`, location.state);
-        setResponse(res.data);
+        const res = await axios.post(`${API_BASE}/predict`, location.state); // ✅ res burada tanımlanmalı
+        setResponse(res.data);               // ✅ response state set ediliyor
         setCapacity(res.data.capacity_map || {});
         setStationRepairs(res.data.station_repairs || []);
+
       } catch (err) {
         alert("Tahmin alınamadı.");
       }
