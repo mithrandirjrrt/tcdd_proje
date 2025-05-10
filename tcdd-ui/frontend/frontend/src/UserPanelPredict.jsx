@@ -28,7 +28,7 @@ function PredictPage() {
 
   return (
     <div>
-      <h2 style={{ color: "#003366" }}>Tahmin Sonuçları</h2>
+      <h2 style={{ color: "#003366" }}>Tahmin Sonuçları:</h2>
 
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 20 }}>
         <div style={{ background: "#e6f2ff", padding: 10, flex: 1, marginRight: 10 }}>

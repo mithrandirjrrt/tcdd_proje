@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Select from "react-select";
-
+import logo from "./assets/Tcdd_logo.png"
 const istasyonlar = [
   "Adana", "Afyon", "Alsancak", "Ankara", "Arifiye", "Balıkesir", "Bandırma", "Bilecik", "Biçerova",
   "Bostankaya", "Burdur", "Demirdağ", "Denizli", "Derince", "Dinar", "Divriği", "Diyarbakır", "Elazığ",
@@ -89,7 +89,8 @@ function AdminStationPanel() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ textAlign:"center"}}>
+       <img src={logo} alt="TCDD Logo" style={{ width: 100, marginBottom: 10 }} />
       <h2 style={{ color: "#003366" }}>🛠️ Bakım İstasyonları</h2>
 
       <Select

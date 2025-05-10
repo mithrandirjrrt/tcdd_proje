@@ -1,1 +1,44 @@
-{}
+{
+  "Arifiye": [
+    {
+      "vagon_no": "12345678998",
+      "vagon_tipi": "Rgns (TSI) (381 6 001/500)",
+      "komponent": "Yan veya Al\u0131n Duvar (A\u00e7\u0131k Vagon)",
+      "prediction": "Arifiye",
+      "confidence": 0.1526,
+      "priority": 2,
+      "neden": "Yan veya Al\u0131n Duvar (A\u00e7\u0131k Vagon) ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131."
+    },
+    {
+      "vagon_no": "12345678965",
+      "vagon_tipi": "Rgns (TSI) (381 6 001/500)",
+      "komponent": "Duvar",
+      "prediction": "Arifiye",
+      "confidence": 0.3322,
+      "priority": 2,
+      "neden": "Duvar ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131."
+    }
+  ],
+  "Tav\u015fanl\u0131": [
+    {
+      "vagon_no": "45678912537",
+      "vagon_tipi": "Sgss (456 8 351/580)",
+      "komponent": "Yan Duvar Kapa\u011f\u0131 (Platform Vagon)",
+      "prediction": "Tav\u015fanl\u0131",
+      "confidence": 0.2531,
+      "priority": 3,
+      "neden": "Yan Duvar Kapa\u011f\u0131 (Platform Vagon) ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131."
+    }
+  ],
+  "\u00dclk\u00fc": [
+    {
+      "vagon_no": "78945612345",
+      "vagon_tipi": "Falns (664 1 532/891)",
+      "komponent": "Yar\u0131 Otomatik Ko\u015fum Tak\u0131m\u0131",
+      "prediction": "\u00dclk\u00fc",
+      "confidence": 0.4978,
+      "priority": 4,
+      "neden": "Yar\u0131 Otomatik Ko\u015fum Tak\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131."
+    }
+  ]
+}

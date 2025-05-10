@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import logo from "./assets/Tcdd_logo.png"
 
 const vagonTipleri = [
   "Fals (665 0 331/2708)", "Ks (330 1 001/2650)", "Sgss (456 8 923/9772)", "Es (552 0 002/1902)",
@@ -61,12 +62,15 @@ function UserPanel() {
 
   return (
     <div>
-      <h2 style={{ color: "#003366" }}>Vagon Arıza Tahmini</h2>
+      <div style ={{textAlign:"center"}}>
+      <img src={logo} alt="TCDD Logo" style={{ width: 250, marginBottom: 10 }} />
+      <h2 style={{ color: "#003366" }}>Vagon Arıza Tahmin Sistemi</h2>
+      </div>
       <input
         value={vagonNo}
         onChange={(e) => setVagonNo(e.target.value)}
         placeholder="Vagon No (11 hane)"
-        style={{ width: "100%", marginBottom: 10, padding: 8 }}
+        style={{ width: "97.5%", marginBottom: 10, padding: 8 }}
       />
 
       <select

@@ -231,3 +231,6 @@ def get_capacities():
 def root():
     return {"message": "Model API aktif 🎯"}
 #uvicorn main:app --reload --host 0.0.0.0 --port 8080
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))

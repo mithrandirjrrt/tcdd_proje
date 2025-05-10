@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import logo from "./assets/Tcdd_logo.png"
 function AdminLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,20 +17,25 @@ function AdminLogin() {
 
   return (
     <div style={{ padding: 30, maxWidth: 400, margin: "auto", background: "#fff", borderRadius: 10, boxShadow: "0 0 10px #ccc" }}>
-      <h2 style={{ color: "#003366" }}>🔐 Admin Girişi</h2>
+       
+            <div style ={{textAlign:"center"}}>
+            <img src={logo} alt="TCDD Logo" style={{ width: 250, marginBottom: 10 }} />
+            <h2 style={{ color: "#003366" }}>🔐 Admin Girişi</h2>
+            </div>
+      
       <input
         type="text"
         placeholder="Kullanıcı Adı"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        style={{ width: "100%", marginBottom: 10, padding: 8 }}
+        style={{ width: "95%", marginBottom: 10, padding: 8 }}
       />
       <input
         type="password"
         placeholder="Şifre"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        style={{ width: "100%", marginBottom: 10, padding: 8 }}
+        style={{ width: "95%", marginBottom: 10, padding: 8 }}
       />
       {error && <p style={{ color: "red" }}>{error}</p>}
       <button
