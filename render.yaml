@@ -1,9 +1,12 @@
 services:
-  - type: static
+  - type: web
     name: tcdd-frontend
-    rootDir: .
+    env: node
+    rootDir: tcdd-ui/frontend/frontend
     buildCommand: npm install && npm run build
-    staticPublishPath: dist
+    startCommand: npx serve -s dist
     envVars:
       - key: NODE_VERSION
         value: 20
+      - key: VITE_API_BASE
+        value: https://<senin-api-url>.onrender.com
