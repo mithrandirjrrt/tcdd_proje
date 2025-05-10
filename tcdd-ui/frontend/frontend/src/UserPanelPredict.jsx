@@ -17,20 +17,6 @@ function PredictPage() {
   const [fallbackInfo, setFallbackInfo] = useState(null);
 
   useEffect(() => {
-    const fetchPrediction = async () => {
-      try {
-        const res = await axios.post(`${API_BASE}/predict`, location.state);
-        setResponse(res.data);
-        setCapacity(res.data.capacity_map || {});
-        setStationRepairs(res.data.station_repairs || []);
-      } catch (err) {
-        setError(true);
-      }
-    };
-    fetchPrediction();
-  }, [location]);
-
-  useEffect(() => {
     const fetchActive = async () => {
       try {
         const res = await axios.get(`${API_BASE}/active_repairs`);
@@ -45,17 +31,14 @@ function PredictPage() {
   const handleActivate = async () => {
     setLoading(true);
     try {
-      const res = await axios.post(`${API_BASE}/activate_repair`, {
-        vagon_no: response.vagon_no,
-        vagon_tipi: response.vagon_tipi,
-        komponent: response.komponent
-      });
+      const res = await axios.post(`${API_BASE}/activate_repair`, location.state);
+      setResponse({ ...location.state, ...res.data });
       setActivated(true);
-      if (res.data.fallback) {
-        setFallbackInfo(res.data);
-      }
+      const updated = await axios.get(`${API_BASE}/active_repairs`);
+      setTumBakimlar(updated.data || {});
     } catch {
       alert("Bakım aktifleştirilemedi.");
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -148,7 +131,7 @@ function PredictPage() {
           </div>
 
           {/* Fallback Bilgisi */}
-          {activated && fallbackInfo?.fallback && (
+          {activated && response.replaced && (
             <div style={{
               marginBottom: 20,
               color: "#b33a3a",
@@ -158,7 +141,7 @@ function PredictPage() {
               borderRadius: 8,
               textAlign: "center"
             }}>
-              ❗ Asıl önerilen istasyon <strong>{fallbackInfo.fallback}</strong> dolu olduğu için <strong>{fallbackInfo.prediction}</strong> istasyonuna yönlendirildiniz.
+              ❗ Asıl önerilen istasyon <strong>{response.fallback}</strong> dolu olduğu için <strong>{response.prediction}</strong> istasyonuna yönlendirildiniz.
             </div>
           )}
 
@@ -175,7 +158,7 @@ function PredictPage() {
             <p style={{ marginTop: 20, color: "green" }}>✅ Bakım başarıyla aktifleştirildi.</p>
           )}
 
-          {/* Alt kutular: Kapasiteler ve Bakımlar */}
+          {/* Alt kutular */}
           <div style={{ display: "flex", gap: 20, flexWrap: "wrap", marginTop: 30 }}>
             <div style={{
               flex: 1,
@@ -215,19 +198,18 @@ function PredictPage() {
               ) : (
                 <p style={{ fontSize: 14, color: "#888" }}>Bu istasyonda aktif bakım yok.</p>
               )}
-            </div>
-          </div>
 
-          {/* Tüm istasyonlardaki aktif bakım sayıları */}
-          <div style={{ marginTop: 30 }}>
-            <h4 style={{ color: "#003366" }}>📊 Tüm İstasyonlardaki Aktif Bakım Sayıları</h4>
-            <ul style={{ listStyle: "none", paddingLeft: 0 }}>
-              {Object.entries(tumBakimlar).map(([ist, list]) => (
-                <li key={ist}>
-                  🔹 <strong>{ist}</strong>: {list.length} bakım
-                </li>
-              ))}
-            </ul>
+              {/* Ek olarak: tüm istasyonlar */}
+              <div style={{ marginTop: 20 }}>
+                <h4 style={{ fontSize: 16, fontWeight: 600, color: "#003366" }}>📌 Tüm İstasyonlardaki Aktif Bakım Sayısı</h4>
+                <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+                  {Object.entries(tumBakimlar).map(([ist, list]) => (
+                    <li key={ist}>🔹 <strong>{ist}</strong>: {list.length} bakım</li>
+                  ))}
+                </ul>
+              </div>
+
+            </div>
           </div>
         </div>
 
