@@ -147,7 +147,7 @@ function PredictPage() {
                 {response.prediction}
                 {response.preferred_station && response.preferred_station !== response.prediction && (
                   <div style={{ fontSize: 14, color: "#666", marginTop: 4 }}>
-                    <span style={{ color: "#b33a3a" }}>❗ Tercih edilen istasyon ({response.preferred_station}) dolu olduğu için yönlendirildiniz.</span>
+                    <span style={{ color: "#b33a3a" }}>Tercih edilen istasyon ({response.preferred_station}) dolu olduğu için yönlendirildiniz❗.</span>
                   </div>
                 )}
               </div>
@@ -177,7 +177,7 @@ function PredictPage() {
               borderRadius: 8,
               textAlign: "center"
             }}>
-              ❗ Asıl önerilen istasyon <strong>{response.fallback}</strong> dolu olduğu için <strong>{response.prediction}</strong> istasyonuna yönlendirildiniz.
+               Asıl önerilen istasyon <strong>{response.fallback}</strong> dolu olduğu için <strong>{response.prediction}</strong> istasyonuna yönlendirildiniz.❗
             </div>
           )}
 
