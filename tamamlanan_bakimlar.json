@@ -1,2 +1,64 @@
 [
+  {
+    "vagon_no": "12344124124",
+    "vagon_tipi": "Fas (637 7 001/330)",
+    "komponent": "Boji Yan Yast\u0131k ve Sustas\u0131",
+    "neden": "Boji Yan Yast\u0131k ve Sustas\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+    "istasyon": "Band\u0131rma"
+  },
+  {
+    "vagon_no": "79845612378",
+    "vagon_tipi": "Ks (330 1 001/2650)",
+    "komponent": "Fren Pn\u00f6matik K\u0131s\u0131m",
+    "neden": "Fren Pn\u00f6matik K\u0131s\u0131m ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+    "istasyon": "Konya"
+  },
+  {
+    "vagon_no": "12344124124",
+    "vagon_tipi": "Fas (637 7 001/330)",
+    "komponent": "Boden",
+    "neden": "Duvar",
+    "istasyon": "\u00c7ank\u0131r\u0131"
+  },
+  {
+    "vagon_no": "45678912345",
+    "vagon_tipi": "Ks (330 1 001/2650)",
+    "komponent": "Sabo",
+    "neden": "Sabo ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+    "istasyon": "Konya",
+    "completion_time": "10 May\u0131s 2025 17:41"
+  },
+  {
+    "vagon_no": "45678912348",
+    "vagon_tipi": "Talns (TSI) (066 5 001/300)",
+    "komponent": "Dikme Deste\u011fi (Platform Vagon)",
+    "neden": "Dikme Deste\u011fi (Platform Vagon) ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+    "istasyon": "\u00dclk\u00fc",
+    "completion_time": "10 May\u0131s 2025 17:46"
+  },
+  {
+    "vagon_no": "45678912313",
+    "vagon_tipi": "Fals (665 0 331/2708)",
+    "komponent": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131",
+    "neden": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+    "istasyon": "\u00dclk\u00fc",
+    "completion_time": "10 May\u0131s 2025 17:50"
+  },
+  {
+    "vagon_no": "45678912309",
+    "vagon_tipi": "Fals (665 0 331/2708)",
+    "komponent": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131",
+    "neden": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+    "istasyon": "\u00dclk\u00fc",
+    "completion_time": "10 May\u0131s 2025 17:52"
+  },
+  {
+    "vagon_no": "78945612393",
+    "vagon_tipi": "Fals (665 0 331/2708)",
+    "komponent": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131",
+    "neden": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+    "istasyon": "Ankara",
+    "completion_time": "10 May\u0131s 2025 18:16",
+    "activation_time": "10 May\u0131s 2025 18:15"
+  }
 ]

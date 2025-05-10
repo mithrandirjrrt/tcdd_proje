@@ -1,3 +1,176 @@
 {
-
+  "\u00dclk\u00fc": [
+    {
+      "vagon_no": "45678912345",
+      "vagon_tipi": "Fals (665 0 331/2708)",
+      "komponent": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131",
+      "prediction": "\u00dclk\u00fc",
+      "confidence": 0.2398,
+      "neden": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 17:43:50"
+    },
+    {
+      "vagon_no": "45678912311",
+      "vagon_tipi": "Fals (665 0 331/2708)",
+      "komponent": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131",
+      "prediction": "\u00dclk\u00fc",
+      "confidence": 0.2398,
+      "neden": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 17:45:01"
+    },
+    {
+      "vagon_no": "45678912312",
+      "vagon_tipi": "Fals (665 0 331/2708)",
+      "komponent": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131",
+      "prediction": "\u00dclk\u00fc",
+      "confidence": 0.2398,
+      "neden": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 17:45:13"
+    },
+    {
+      "vagon_no": "45678912348",
+      "vagon_tipi": "Talns (TSI) (066 5 001/300)",
+      "komponent": "Dikme (Platform Vagon)",
+      "prediction": "\u00dclk\u00fc",
+      "confidence": 0.3781,
+      "neden": "Dikme (Platform Vagon) ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 17:47:34"
+    },
+    {
+      "vagon_no": "45678912347",
+      "vagon_tipi": "Fals (665 0 331/2708)",
+      "komponent": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131",
+      "prediction": "\u00dclk\u00fc",
+      "confidence": 0.2398,
+      "neden": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 17:50:58"
+    }
+  ],
+  "Arifiye": [
+    {
+      "vagon_no": "45678912344",
+      "vagon_tipi": "Ks (330 1 001/2650)",
+      "komponent": "Yar\u0131 Otomatik Ko\u015fum Tak\u0131m\u0131",
+      "prediction": "Arifiye",
+      "confidence": 0.2964,
+      "neden": "Yar\u0131 Otomatik Ko\u015fum Tak\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 17:44:06"
+    },
+    {
+      "vagon_no": "45688912347",
+      "vagon_tipi": "Ks (330 2 652/3252)",
+      "komponent": "Boji Yan Yast\u0131k ve Sustas\u0131",
+      "prediction": "Arifiye",
+      "confidence": 0.4534,
+      "neden": "Boji Yan Yast\u0131k ve Sustas\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 18:32",
+      "preferred_station": null,
+      "preferred_confidence": null
+    },
+    {
+      "vagon_no": "74136978921",
+      "vagon_tipi": "Habis (275 2 001/390)",
+      "komponent": "Boji Yan Yast\u0131k ve Sustas\u0131",
+      "prediction": "Arifiye",
+      "confidence": 0.2586,
+      "neden": "Boji Yan Yast\u0131k ve Sustas\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 18:34",
+      "preferred_station": null,
+      "preferred_confidence": null
+    }
+  ],
+  "Band\u0131rma": [
+    {
+      "vagon_no": "78945678958",
+      "vagon_tipi": "Fals (665 0 331/2708)",
+      "komponent": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131",
+      "prediction": "Band\u0131rma",
+      "confidence": 0.219,
+      "neden": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 17:59:40"
+    },
+    {
+      "vagon_no": "45678945678",
+      "vagon_tipi": "Fals (665 0 331/2708)",
+      "komponent": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131",
+      "prediction": "Band\u0131rma",
+      "confidence": 0.219,
+      "neden": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 18:07",
+      "preferred_station": "\u00dclk\u00fc",
+      "preferred_confidence": 0.2398
+    },
+    {
+      "vagon_no": "89562374189",
+      "vagon_tipi": "Fals (665 0 331/2708)",
+      "komponent": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131",
+      "prediction": "Band\u0131rma",
+      "confidence": 0.219,
+      "neden": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 18:10",
+      "preferred_station": "\u00dclk\u00fc",
+      "preferred_confidence": 0.2398
+    },
+    {
+      "vagon_no": "74859641526",
+      "vagon_tipi": "Fals (665 0 331/2708)",
+      "komponent": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131",
+      "prediction": "Band\u0131rma",
+      "confidence": 0.219,
+      "neden": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 18:12",
+      "preferred_station": "\u00dclk\u00fc",
+      "preferred_confidence": 0.2398
+    },
+    {
+      "vagon_no": "74859669584",
+      "vagon_tipi": "Fals (665 0 331/2708)",
+      "komponent": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131",
+      "prediction": "Band\u0131rma",
+      "confidence": 0.219,
+      "neden": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 18:13",
+      "preferred_station": "\u00dclk\u00fc",
+      "preferred_confidence": 0.2398
+    }
+  ],
+  "Ankara": [
+    {
+      "vagon_no": "45678912374",
+      "vagon_tipi": "Fals (665 0 331/2708)",
+      "komponent": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131",
+      "prediction": "Ankara",
+      "confidence": 0.1732,
+      "neden": "Vagon G\u00f6vdesi \u0130\u00e7 Donan\u0131m\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 18:16",
+      "preferred_station": "\u00dclk\u00fc",
+      "preferred_confidence": 0.2398
+    }
+  ],
+  "Tav\u015fanl\u0131": [
+    {
+      "vagon_no": "74591347845",
+      "vagon_tipi": "Falns (664 2 001/300)",
+      "komponent": "Sabo",
+      "prediction": "Tav\u015fanl\u0131",
+      "confidence": 0.4928,
+      "neden": "Sabo ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 18:16",
+      "preferred_station": null,
+      "preferred_confidence": null
+    }
+  ],
+  "Zonguldak": [
+    {
+      "vagon_no": "12312353235",
+      "vagon_tipi": "Fas (637 7 001/330)",
+      "komponent": "Boji Yan Yast\u0131k ve Sustas\u0131",
+      "prediction": "Zonguldak",
+      "confidence": 0.0897,
+      "neden": "Boji Yan Yast\u0131k ve Sustas\u0131 ar\u0131zas\u0131 nedeniyle tamire al\u0131nd\u0131.",
+      "activation_time": "10 May\u0131s 2025 18:36",
+      "preferred_station": "Band\u0131rma",
+      "preferred_confidence": 0.4023
+    }
+  ]
 }

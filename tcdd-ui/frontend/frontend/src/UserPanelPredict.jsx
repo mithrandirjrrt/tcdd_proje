@@ -17,27 +17,56 @@ function PredictPage() {
   const [fallbackInfo, setFallbackInfo] = useState(null);
 
   useEffect(() => {
-    const fetchActive = async () => {
+    if (!location.state) return;
+
+    const fetchPrediction = async () => {
       try {
-        const res = await axios.get(`${API_BASE}/active_repairs`);
-        setTumBakimlar(res.data || {});
-      } catch {
-        console.error("Aktif bakımlar alınamadı.");
+        const res = await axios.post(`${API_BASE}/predict`, location.state);
+        setResponse(res.data);
+        
+        // Aktif bakımları getir
+        const activeRepairs = await axios.get(`${API_BASE}/active_repairs`);
+        setTumBakimlar(activeRepairs.data || {});
+      } catch (err) {
+        console.error("Tahmin alınamadı:", err);
+        setError(err.response?.data?.detail || "Tahmin alınamadı. Lütfen tekrar deneyin.");
       }
     };
-    fetchActive();
-  }, []);
+
+    fetchPrediction();
+  }, [location.state]);
 
   const handleActivate = async () => {
     setLoading(true);
     try {
-      const res = await axios.post(`${API_BASE}/activate_repair`, location.state);
-      setResponse({ ...location.state, ...res.data });
-      setActivated(true);
-      const updated = await axios.get(`${API_BASE}/active_repairs`);
-      setTumBakimlar(updated.data || {});
-    } catch {
-      alert("Bakım aktifleştirilemedi.");
+      const now = new Date();
+      const formattedDate = now.toLocaleString('tr-TR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      const response = await axios.post(`${API_BASE}/activate_repair`, {
+        ...location.state,
+        activation_time: formattedDate
+      });
+
+      if (response.status === 200) {
+        setResponse(prev => ({
+          ...prev,
+          prediction: response.data.assigned_station,
+          preferred_station: response.data.preferred_station
+        }));
+        
+        setActivated(true);
+        const updated = await axios.get(`${API_BASE}/active_repairs`);
+        setTumBakimlar(updated.data || {});
+      }
+    } catch (error) {
+      console.error("Bakım aktivasyonu sırasında hata:", error);
+      alert(error.response?.data?.message || "Bakım aktivasyonu sırasında bir hata oluştu!");
       setError(true);
     } finally {
       setLoading(false);
@@ -114,7 +143,14 @@ function PredictPage() {
               border: "1px solid #cce1ff"
             }}>
               <div style={{ fontSize: 14, color: "#555" }}>📍 Yönlendirilen İstasyon</div>
-              <div style={{ fontSize: 18, fontWeight: 600, marginTop: 4 }}>{response.prediction}</div>
+              <div style={{ fontSize: 18, fontWeight: 600, marginTop: 4 }}>
+                {response.prediction}
+                {response.preferred_station && response.preferred_station !== response.prediction && (
+                  <div style={{ fontSize: 14, color: "#666", marginTop: 4 }}>
+                    <span style={{ color: "#b33a3a" }}>❗ Tercih edilen istasyon ({response.preferred_station}) dolu olduğu için yönlendirildiniz.</span>
+                  </div>
+                )}
+              </div>
             </div>
 
             <div style={{
@@ -170,12 +206,13 @@ function PredictPage() {
               maxHeight: 250,
               overflowY: "auto"
             }}>
-              <h4 style={{ fontSize: 16, fontWeight: 600, marginBottom: 10, color: "#003366" }}>📊 İstasyon Kapasiteleri</h4>
-              {Object.entries(capacity).map(([key, val]) => (
-                <div key={key} style={{ marginBottom: 6 }}>
-                  <strong>{key}</strong>: {val} / 5
-                </div>
-              ))}
+              <h4 style={{ fontSize: 16, fontWeight: 600, marginBottom: 10, color: "#003366" }}>📊 Tüm İstasyonlardaki Aktif Bakım Sayısı</h4>
+              <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+                {Object.entries(tumBakimlar).map(([ist, list]) => (
+                  <li key={ist}>🔹 <strong>{ist}</strong>: {list.length} / 5 bakım</li>
+                ))}
+                {Object.keys(tumBakimlar).length === 0 && <li>Hiç bir istasyonda bakım yoktur.</li>}
+              </ul>
             </div>
 
             <div style={{
@@ -188,27 +225,40 @@ function PredictPage() {
               maxHeight: 250,
               overflowY: "auto"
             }}>
-              <h4 style={{ fontSize: 16, fontWeight: 600, marginBottom: 10, color: "#003366" }}>🛠️ {response.prediction} İstasyonundaki Bakımlar</h4>
-              {stationRepairs.length > 0 ? (
-                stationRepairs.map((rep, i) => (
-                  <div key={i} style={{ marginBottom: 6, fontSize: 14 }}>
-                    🔹 <strong>{rep.vagon_no}</strong> – {rep.vagon_tipi} – {rep.komponent} ({rep.neden})
-                  </div>
-                ))
+              <h4 style={{ fontSize: 16, fontWeight: 600, marginBottom: 10, color: "#003366" }}>
+                🛠️ {response.prediction} İstasyonundaki Bakımlar
+                {response.preferred_station && response.preferred_station !== response.prediction && (
+                  <span style={{ fontSize: 14, color: "#666", marginLeft: 8 }}>
+                    (Tercih edilen {response.preferred_station} istasyonu dolu olduğu için)
+                  </span>
+                )}
+              </h4>
+              {tumBakimlar[response.prediction]?.length > 0 ? (
+                <table width="100%" cellPadding="8" style={{ borderCollapse: "collapse" }}>
+                  <thead>
+                    <tr style={{ backgroundColor: "#f3f6f9", fontWeight: "bold", color: "#003366" }}>
+                      <td>Vagon No</td>
+                      <td>Vagon Tipi</td>
+                      <td>Komponent</td>
+                      <td>Neden</td>
+                      <td>Giriş Zamanı</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {tumBakimlar[response.prediction].map((rep, i) => (
+                      <tr key={i} style={{ borderBottom: "1px solid #eee" }}>
+                        <td><strong>{rep.vagon_no}</strong></td>
+                        <td>{rep.vagon_tipi}</td>
+                        <td>{rep.komponent}</td>
+                        <td>{rep.neden}</td>
+                        <td>{rep.activation_time}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               ) : (
-                <p style={{ fontSize: 14, color: "#888" }}>Bu istasyonda aktif bakım yok.</p>
+                <p>Henüz bakım yok.</p>
               )}
-
-              {/* Ek olarak: tüm istasyonlar */}
-              <div style={{ marginTop: 20 }}>
-                <h4 style={{ fontSize: 16, fontWeight: 600, color: "#003366" }}>📌 Tüm İstasyonlardaki Aktif Bakım Sayısı</h4>
-                <ul style={{ listStyle: "none", paddingLeft: 0 }}>
-                  {Object.entries(tumBakimlar).map(([ist, list]) => (
-                    <li key={ist}>🔹 <strong>{ist}</strong>: {list.length} bakım</li>
-                  ))}
-                </ul>
-              </div>
-
             </div>
           </div>
         </div>

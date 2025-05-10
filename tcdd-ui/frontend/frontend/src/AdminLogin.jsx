@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./assets/Tcdd_logo.png";
+import axios from "axios";
+
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 function AdminLogin() {
   const [username, setUsername] = useState("");
@@ -8,8 +11,8 @@ function AdminLogin() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    if (username === "admin123" && password === "admin123") {
+  const handleLogin = async () => {
+    if (username === 'admin123' && password === 'admin123') {
       navigate("/admin");
     } else {
       setError("❌ Kullanıcı adı veya şifre yanlış.");
@@ -17,17 +20,14 @@ function AdminLogin() {
   };
 
   return (
-<div style={{
-  background: "#e7f1ff",
-  padding: "40px 20px",
-  minHeight: "10vh",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center"
-}}>
-
-
-
+    <div style={{
+      background: "#e7f1ff",
+      padding: "40px 20px",
+      minHeight: "10vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    }}>
       <div style={{
         background: "white",
         padding: 30,

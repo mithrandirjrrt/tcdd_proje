@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./assets/Tcdd_logo.png";
+import axios from "axios";
 
 const vagonTipleri = [
   "Fals (665 0 331/2708)", "Ks (330 1 001/2650)", "Sgss (456 8 923/9772)", "Es (552 0 002/1902)",
@@ -36,17 +37,18 @@ const komponentler = [
   "Vagon Duvarı veya Kenarı", "Tekerlek Gövdesi", "Y Bojide Manganlı Aşınma Plakası"
 ];
 
-
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 function UserPanel() {
   const [vagonNo, setVagonNo] = useState("");
   const [vagonTipi, setVagonTipi] = useState("");
   const [komponent, setKomponent] = useState("");
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (!/^[0-9]{11}$/.test(vagonNo)) {
-      alert("Lütfen 11 haneli bir vagon numarası girin.");
+      setError("Vagon numarası 11 haneli olmalıdır.");
       return;
     }
     if (!vagonTipi || !komponent) {
@@ -54,13 +56,23 @@ function UserPanel() {
       return;
     }
 
-    navigate("/predict", {
-      state: {
+    try {
+      const res = await axios.post(`${API_BASE}/predict`, {
         vagon_no: vagonNo,
         vagon_tipi: vagonTipi,
         komponent: komponent
+      });
+      navigate("/predict", { state: res.data });
+    } catch (err) {
+      console.error("Tahmin yapılamadı:", err);
+      if (err.response?.data?.detail) {
+        setError(err.response.data.detail);
+      } else if (err.response?.data?.error) {
+        setError(err.response.data.error);
+      } else {
+        setError("Tahmin yapılamadı Vagon Aktif Bakımda. Lütfen tekrar deneyin.");
       }
-    });
+    }
   };
 
   return (
@@ -76,7 +88,7 @@ function UserPanel() {
         onChange={(e) => setVagonNo(e.target.value)}
         placeholder="Vagon No (11 hane)"
         style={{
-          width: "100%", marginBottom: 15, padding: 10,
+          width: "96%", marginBottom: 15, padding: 10,
           border: "1px solid #ccc", borderRadius: 8, fontSize: 14
         }}
       />
@@ -108,6 +120,23 @@ function UserPanel() {
           <option key={i} value={k}>{k}</option>
         ))}
       </select>
+
+      {error && (
+        <div style={{
+          background: "#ffebee",
+          border: "1px solid #ffcdd2",
+          borderRadius: 8,
+          padding: "16px",
+          marginBottom: "20px",
+          color: "#b00020",
+          display: "flex",
+          alignItems: "center",
+          gap: "10px"
+        }}>
+          <span style={{ fontSize: "20px" }}>⚠️</span>
+          <span>{error}</span>
+        </div>
+      )}
 
       <button
         onClick={handleNext}
