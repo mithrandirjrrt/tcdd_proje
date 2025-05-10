@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "./assets/Tcdd_logo.png"
+import logo from "./assets/Tcdd_logo.png";
 
 const vagonTipleri = [
   "Fals (665 0 331/2708)", "Ks (330 1 001/2650)", "Sgss (456 8 923/9772)", "Es (552 0 002/1902)",
@@ -19,8 +19,9 @@ const vagonTipleri = [
 const komponentler = [
   "Tekerleğin Bandaj Kısmı", "Fren Pnömatik Kısım", "Sabo", "Boden", "Kapı ve Sürme Duvar",
   "Dikme (Platform Vagon)", "Yan veya Alın Duvar (Açık Vagon)", "Fren Mekanik Kısım", "Duvar",
-  "Yarı Otomatik Koşum Takımı", "Yan Duvar Kapağı (Platform Vagon)", "Basamak/Tutamak/Merdiven/Geçit/Korkuluk/Yazı Levhaları vb. Değişik Parçalar",
-  "Yaprak Susta", "Boji Yan Yastık ve Sustası", "Branda Kilitleme Tertibatı (Rils vb) (Özel Tertibatlı Vagon)",
+  "Yarı Otomatik Koşum Takımı", "Yan Duvar Kapağı (Platform Vagon)",
+  "Basamak/Tutamak/Merdiven/Geçit/Korkuluk/Yazı Levhaları vb. Değişik Parçalar",
+  "Yaprak Susta", "Boji Yan Yastık ve Sustası", "Branda Kilitleme Tertibatı (Rils vb)",
   "Çatı ve Su Sızdırmazlığı (Kapalı Vagon)", "Dikme Desteği (Platform Vagon)", "Y 25 Bojinin Süspansiyon Sistemi",
   "Topraklama Kablosu", "Süspansiyon Bağlantıları", "El Freni", "Taban", "Dingil Kutusu",
   "Vagon Gövdesi İç Donanımı", "Yükün Dağılımı", "Kapama Tertibatı/Tespit Sportu (Kapalı Vagon)",
@@ -34,6 +35,8 @@ const komponentler = [
   "Dingil", "Bandajlı Tekerlek", "Dingil Çatalı Bağlantı Pernosu", "Dingil Çatalı Aşınma Plakası",
   "Vagon Duvarı veya Kenarı", "Tekerlek Gövdesi", "Y Bojide Manganlı Aşınma Plakası"
 ];
+
+
 
 function UserPanel() {
   const [vagonNo, setVagonNo] = useState("");
@@ -61,22 +64,30 @@ function UserPanel() {
   };
 
   return (
-    <div>
-      <div style ={{textAlign:"center"}}>
-      <img src={logo} alt="TCDD Logo" style={{ width: 250, marginBottom: 10 }} />
-      <h2 style={{ color: "#003366" }}>Vagon Arıza Tahmin Sistemi</h2>
+    <div style={{ maxWidth: 600, margin: "40px auto", padding: 20, background: "#fff", borderRadius: 12, boxShadow: "0 0 10px rgba(0,0,0,0.05)" }}>
+      <div style={{ textAlign: "center", marginBottom: 20 }}>
+        <img src={logo} alt="TCDD Logo" style={{ width: 200, marginBottom: 10 }} />
+        <h2 style={{ color: "#003366", fontSize: 22, marginBottom: 5 }}>Vagon Arıza Tahmin Sistemi</h2>
+        <p style={{ fontSize: 14, color: "#555" }}>Lütfen aşağıdaki bilgileri eksiksiz doldurun.</p>
       </div>
+
       <input
         value={vagonNo}
         onChange={(e) => setVagonNo(e.target.value)}
         placeholder="Vagon No (11 hane)"
-        style={{ width: "97.5%", marginBottom: 10, padding: 8 }}
+        style={{
+          width: "100%", marginBottom: 15, padding: 10,
+          border: "1px solid #ccc", borderRadius: 8, fontSize: 14
+        }}
       />
 
       <select
         value={vagonTipi}
         onChange={(e) => setVagonTipi(e.target.value)}
-        style={{ width: "100%", marginBottom: 10, padding: 8 }}
+        style={{
+          width: "100%", marginBottom: 15, padding: 10,
+          border: "1px solid #ccc", borderRadius: 8, fontSize: 14
+        }}
       >
         <option value="">Vagon Tipi Seç</option>
         {vagonTipleri.map((v, i) => (
@@ -87,7 +98,10 @@ function UserPanel() {
       <select
         value={komponent}
         onChange={(e) => setKomponent(e.target.value)}
-        style={{ width: "100%", marginBottom: 10, padding: 8 }}
+        style={{
+          width: "100%", marginBottom: 20, padding: 10,
+          border: "1px solid #ccc", borderRadius: 8, fontSize: 14
+        }}
       >
         <option value="">Komponent Seç</option>
         {komponentler.map((k, i) => (
@@ -97,9 +111,15 @@ function UserPanel() {
 
       <button
         onClick={handleNext}
-        style={{ width: "100%", padding: 10, background: "#003366", color: "white" }}
+        style={{
+          width: "100%", padding: 12, background: "#003366",
+          color: "white", fontWeight: "bold", border: "none", borderRadius: 8,
+          cursor: "pointer", transition: "background 0.3s"
+        }}
+        onMouseOver={(e) => e.currentTarget.style.background = "#002244"}
+        onMouseOut={(e) => e.currentTarget.style.background = "#003366"}
       >
-        Tamam
+        Tahmini Görüntüle
       </button>
     </div>
   );
