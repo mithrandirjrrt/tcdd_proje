@@ -1,6 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+const API_BASE = import.meta.env.VITE_API_BASE;
+
 
 function PredictPage() {
   const location = useLocation();
@@ -13,7 +15,7 @@ function PredictPage() {
     if (!location.state) return;
     const fetchPrediction = async () => {
       try {
-        const res = await axios.post("http://127.0.0.1:8000/predict", location.state);
+        await axios.post(`${API_BASE}/predict`, location.state);
         setResponse(res.data);
         setCapacity(res.data.capacity_map || {});
         setStationRepairs(res.data.station_repairs || []);

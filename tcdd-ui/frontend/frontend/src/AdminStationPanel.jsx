@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Select from "react-select";
 import logo from "./assets/Tcdd_logo.png"
+const API_BASE = import.meta.env.VITE_API_BASE;
+
 const istasyonlar = [
   "Adana", "Afyon", "Alsancak", "Ankara", "Arifiye", "Balıkesir", "Bandırma", "Bilecik", "Biçerova",
   "Bostankaya", "Burdur", "Demirdağ", "Denizli", "Derince", "Dinar", "Divriği", "Diyarbakır", "Elazığ",
@@ -48,7 +50,7 @@ function AdminStationPanel() {
     localStorage.setItem("bakimlar", JSON.stringify(bakimlar));
   }, [bakimlar]);
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/active_repairs")
+    axios.get(`${API_BASE}/active_repairs`)
       .then(res => {
         setBakimlar(res.data);
         localStorage.setItem("bakimlar", JSON.stringify(res.data));
@@ -70,13 +72,13 @@ function AdminStationPanel() {
       return;
     }
     try {
-      await axios.post("http://127.0.0.1:8000/complete_repair", {
+      await axios.post(`${API_BASE}/complete_repair`, payload), {
         vagon_no: secili.vagon_no,
         vagon_tipi: secili.vagon_tipi,
         komponent: secili.komponent,
         neden: secili.neden,
         istasyon: istasyon
-      });
+      };
     } catch (err) {
       alert("API'ye gönderilemedi ❌");
       return;
