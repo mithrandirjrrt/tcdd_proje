@@ -1,9 +1,0 @@
-services:
-  - type: static
-    name: tcdd-frontend
-    rootDir: .
-    buildCommand: npm install && npm run build
-    staticPublishPath: dist
-    envVars:
-      - key: NODE_VERSION
-        value: 20

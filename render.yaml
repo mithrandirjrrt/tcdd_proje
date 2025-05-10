@@ -1,11 +1,9 @@
 services:
-  - type: web
-    name: tcdd-api
-    env: python
-    plan: free
-    buildCommand: ""
-    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+  - type: static
+    name: tcdd-frontend
+    rootDir: .
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
     envVars:
-      - key: PORT
-        value: 10000
-    autoDeploy: true
+      - key: NODE_VERSION
+        value: 20
