@@ -324,7 +324,10 @@ def reset_capacity():
     with capacity_lock:
         station_capacity = {ist: 5 for ist in id2label.values()}
     return {"message": "Kapasiteler sıfırlandı 🎯"}
-
+@app.get("/completed_repairs")
+def completed_repairs():
+    with open(COMPLETED_REPAIRS_FILE, "r") as f:
+        return json.load(f)
 @app.get("/capacities")
 def get_capacities():
     return station_capacity
